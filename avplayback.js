@@ -31,6 +31,24 @@ instance.prototype.init = function() {
 	}
 };
 
+instance.prototype.updateConfig = function(config) {
+	var self = this;
+	self.config = config;
+
+	if (self.udp !== undefined) {
+		self.udp.destroy();
+		delete self.udp;
+	}
+
+	if (self.config.host !== undefined) {
+		self.udp = new udp(self.config.host, 7000);
+
+		self.udp.on('status_change', function (status, message) {
+			self.status(status, message);
+		});
+	}
+};
+
 // Return config fields for web config
 instance.prototype.config_fields = function () {
 	var self = this;
@@ -171,22 +189,7 @@ instance.prototype.action = function(action) {
 
 	if (cmd !== undefined) {
 
-		// TODO: remove this when issue #71 is fixed
-		if (self.udp === undefined && self.config.host) {
-			self.udp = new udp(self.config.host, 7000);
-
-			self.udp.on('status_change', function (status, message) {
-				self.status(status, message);
-			});
-		}
-
 		if (self.udp !== undefined) {
-
-			if (self.udp.host != self.config.host) {
-				// TODO: remove this when issue #71 is fixed
-				self.udp.unload();
-				self.udp = new udp(self.config.host, 7000);
-			}
 
 			debug('sending ',cmd,"to",self.udp.host);
 
