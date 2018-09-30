@@ -1,11 +1,17 @@
 {
   "name": "avplayback",
-  "version": "0.0.2",
-  "description": "avplayback plugin for Companion",
+  "version": "1.0.0",
+	"api_version": "1.0.0",
+  "description": "Control module for AV Playback",
+	"keywords": [ "Video", "Software" ],
+	"manufacturer": "if-else{Ware}",
+	"product": "AV-Playback",
+	"shortname": "avplayback",
+	"homepage": "https://www.ifelseware.com/",
   "main": "avplayback.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Per Roine",
+  "author": "Per Røine <per.roine@gmail.com>",
   "license": "ISC"
 }

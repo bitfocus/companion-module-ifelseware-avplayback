@@ -196,16 +196,9 @@ instance.prototype.action = function(action) {
 			self.udp.send(cmd);
 		}
 	}
-
-
-
+	
 };
 
-instance.module_info = {
-	label: 'AV-Playback UDP',
-	id: 'avplayback',
-	version: '0.0.2'
-};
 
 instance_skel.extendedBy(instance);
 exports = module.exports = instance;
