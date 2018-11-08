@@ -78,27 +78,27 @@ instance.prototype.actions = function(system) {
 
 	self.system.emit('instance_actions', self.id, {
 		'load': {
-			label: 'Load Clip (nr)',
+			label: 'Load Clip (nr) e.g. 01',
 			options: [
 				{
 					 type: 'textinput',
 					 label: 'Clip Nr.',
 					 id: 'clip',
-					 default: 1,
-					 regex: self.REGEX_NUMBER
+					 default: "01",
+					 regex: self.REGEX_STRING
 				}
 			]
 		},
 
 		'playClip': {
-			label: 'Play Clip (nr)',
+			label: 'Play Clip (nr) e.g. 01',
 			options: [
 				{
 					 type: 'textinput',
 					 label: 'Clip Nr.',
 					 id: 'clip',
-					 default: 1,
-					 regex: self.REGEX_NUMBER
+					 default: "01",
+					 regex: self.REGEX_STRING
 				}
 			]
 		},
@@ -119,8 +119,13 @@ instance.prototype.actions = function(system) {
 		'play':     { label: 'Play standby clip' },
 		'pause':    { label: 'Pause Resume' },
 		'stop':     { label: 'Stop' },
+		'previewStart':     { label: 'Play preview clip' },
+		'previewPause':    { label: 'Preview Pause' },
+		'previewStop':     { label: 'Preview Stop' },
 		'freeze':   { label: 'Freeze temp' },
 		'loop':     { label: 'Loop temp' },
+		'nextTag':   { label: 'Next Tag' },
+		'prevTag':     { label: 'Previous Tag' },
 		'10':       { label: 'Goto 10' },
 		'20':       { label: 'Goto 20' },
 		'30':       { label: 'Goto 30' },
@@ -143,19 +148,31 @@ instance.prototype.action = function(action) {
 			break;
 
 		case 'playClip':
-			cmd = 'AVP|1|start,' + opt.clip;
+			cmd = 'AVP|1|PgmStart,' + opt.clip;
 			break;
 
 		case 'play':
-			cmd = 'AVP|1|Start,-1';
+			cmd = 'AVP|1|PgmStart,-1';
 			break;
 
 		case 'pause':
-			cmd = 'AVP|1|Pause';
+			cmd = 'AVP|1|PgmPause';
 			break;
 
 		case 'stop':
-			cmd = 'AVP|1|Stop';
+			cmd = 'AVP|1|PgmStop';
+			break;
+
+		case 'previewStart':
+			cmd = 'AVP|1|PrvStart';
+			break;
+
+		case 'previewPause':
+			cmd = 'AVP|1|PrvPause';
+			break;
+
+		case 'previewStop':
+			cmd = 'AVP|1|PrvStop';
 			break;
 
 		case 'freeze':
@@ -164,6 +181,14 @@ instance.prototype.action = function(action) {
 
 		case 'loop':
 			cmd = 'AVP|1|TmpLoop';
+			break;
+
+		case 'nextTag':
+			cmd = 'AVP|1|NextTag';
+			break;
+
+		case 'prevTag':
+			cmd = 'AVP|1|PrevTag';
 			break;
 
 		case 'gotoTc':
@@ -193,7 +218,7 @@ instance.prototype.action = function(action) {
 
 			debug('sending ',cmd,"to",self.udp.host);
 
-			self.udp.send(cmd);
+			self.udp.send(cmd + " ");
 		}
 	}
 
