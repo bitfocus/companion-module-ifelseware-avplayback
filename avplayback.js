@@ -78,27 +78,27 @@ instance.prototype.actions = function(system) {
 
 	self.system.emit('instance_actions', self.id, {
 		'load': {
-			label: 'Load Clip (nr) e.g. 01',
+			label: 'Load Clip (nr)',
 			options: [
 				{
 					 type: 'textinput',
 					 label: 'Clip Nr.',
 					 id: 'clip',
-					 default: "01",
-					 regex: self.REGEX_STRING
+					 default: 1,
+					 regex: self.REGEX_NUMBER
 				}
 			]
 		},
 
 		'playClip': {
-			label: 'Play Clip (nr) e.g. 01',
+			label: 'Play Clip (nr)',
 			options: [
 				{
 					 type: 'textinput',
 					 label: 'Clip Nr.',
 					 id: 'clip',
-					 default: "01",
-					 regex: self.REGEX_STRING
+					 default: 1,
+					 regex: self.REGEX_NUMBER
 				}
 			]
 		},
@@ -144,11 +144,11 @@ instance.prototype.action = function(action) {
 	switch (action.action) {
 
 		case 'load':
-			cmd = 'AVP|1|LoadClip,' + opt.clip;
+			cmd = 'AVP|1|LoadClip,' + ('0' + opt.clip).substr(-2);
 			break;
 
 		case 'playClip':
-			cmd = 'AVP|1|PgmStart,' + opt.clip;
+			cmd = 'AVP|1|PgmStart,' + ('0' + opt.clip).substr(-2);
 			break;
 
 		case 'play':
