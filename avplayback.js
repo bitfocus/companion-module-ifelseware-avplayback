@@ -116,20 +116,20 @@ instance.prototype.actions = function(system) {
 			]
 		},
 
-		'play':     { label: 'Play standby clip' },
-		'pause':    { label: 'Pause Resume' },
-		'stop':     { label: 'Stop' },
-		'previewStart':     { label: 'Play preview clip' },
-		'previewPause':    { label: 'Preview Pause' },
-		'previewStop':     { label: 'Preview Stop' },
-		'freeze':   { label: 'Freeze temp' },
-		'loop':     { label: 'Loop temp' },
-		'nextTag':   { label: 'Next Tag' },
-		'prevTag':     { label: 'Previous Tag' },
-		'10':       { label: 'Goto 10' },
-		'20':       { label: 'Goto 20' },
-		'30':       { label: 'Goto 30' },
-		'60':       { label: 'Goto 60' }
+		'play':     		{ label: 'Play standby clip' },
+		'pause':    		{ label: 'Pause Resume' },
+		'stop':     		{ label: 'Stop' },
+		'previewStart':     	{ label: 'Play preview clip' },
+		'previewPause':    	{ label: 'Preview Pause' },
+		'previewStop':     	{ label: 'Preview Stop' },
+		'freeze':   		{ label: 'Freeze temp' },
+		'loop':     		{ label: 'Loop temp' },
+		'nextTag':   		{ label: 'Next Tag' },
+		'prevTag':     		{ label: 'Previous Tag' },
+		'10':       		{ label: 'Goto 10' },
+		'20':       		{ label: 'Goto 20' },
+		'30':       		{ label: 'Goto 30' },
+		'60':       		{ label: 'Goto 60' }
 	});
 };
 
