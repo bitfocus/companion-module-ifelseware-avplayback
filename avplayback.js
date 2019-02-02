@@ -23,7 +23,7 @@ instance.prototype.init = function() {
 	self.status(self.STATUS_UNKNOWN);
 
 	if (self.config.host !== undefined) {
-		self.udp = new udp(self.config.host, 7000);
+		self.udp = new udp(self.config.host, self.config.port);
 
 		self.udp.on('status_change', function (status, message) {
 			self.status(status, message);
@@ -41,7 +41,7 @@ instance.prototype.updateConfig = function(config) {
 	}
 
 	if (self.config.host !== undefined) {
-		self.udp = new udp(self.config.host, 7000);
+		self.udp = new udp(self.config.host, self.config.port);
 
 		self.udp.on('status_change', function (status, message) {
 			self.status(status, message);
@@ -59,6 +59,24 @@ instance.prototype.config_fields = function () {
 			label: 'Target IP',
 			width: 6,
 			regex: self.REGEX_IP
+		},
+		{
+			type: 'textinput',
+			id: 'port',
+			label: 'Target Port',
+			width: 6,
+			default: 7000,
+			regex: self.REGEX_PORT
+		},
+		{
+			type: 'dropdown',
+			id: 'usePadFix',
+			label: 'Use Pad Fix',
+			default: '2',
+			choices: [
+				{ id: '1', label: 'Yes' },
+				{ id: '2', label: 'No' }
+			  ]
 		}
 	]
 };
@@ -122,6 +140,8 @@ instance.prototype.actions = function(system) {
 		'previewStart':     	{ label: 'Play preview clip' },
 		'previewPause':    	{ label: 'Preview Pause' },
 		'previewStop':     	{ label: 'Preview Stop' },
+		'nextClip':			{ label: 'Next Clip'},
+		'prevClip':			{ label: 'Previous Clip'},
 		'freeze':   		{ label: 'Freeze temp' },
 		'loop':     		{ label: 'Loop temp' },
 		'nextTag':   		{ label: 'Next Tag' },
@@ -140,7 +160,7 @@ instance.prototype.action = function(action) {
 	var cmd;
 	var opt = action.options;
 
-	// avplayback port 7000
+	// avplayback default port 7000 
 	switch (action.action) {
 
 		case 'load':
@@ -158,6 +178,9 @@ instance.prototype.action = function(action) {
 		case 'pause':
 			cmd = 'AVP|1|PgmPause';
 			break;
+			case 'nextClip':
+			cmd = 'AVP|1|NextClip';
+			break;
 
 		case 'stop':
 			cmd = 'AVP|1|PgmStop';
@@ -174,6 +197,14 @@ instance.prototype.action = function(action) {
 		case 'previewStop':
 			cmd = 'AVP|1|PrvStop';
 			break;
+
+		case 'nextClip':
+			cmd = 'AVP|1|NextClip';
+			break;
+
+		case 'prevClip':
+			cmd = 'AVP|1|PrevClip';
+		break;
 
 		case 'freeze':
 			cmd = 'AVP|1|TmpHold';
@@ -218,7 +249,14 @@ instance.prototype.action = function(action) {
 
 			debug('sending ',cmd,"to",self.udp.host);
 
-			self.udp.send(cmd + " ");
+			// padding breaks my version of AVP
+			// todo, add switch to enable/disable pad
+			// self.udp.send(cmd + " ");
+			if (self.config.usePadFix == '1') {
+				self.udp.send(cmd + " ");
+			} else {
+				self.udp.send(cmd);
+			}
 		}
 	}
 	
