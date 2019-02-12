@@ -73,10 +73,11 @@ instance.prototype.config_fields = function () {
 			id: 'usePadFix',
 			label: 'Use Pad Fix',
 			default: '2',
+			width: 6,
 			choices: [
 				{ id: '1', label: 'Yes' },
 				{ id: '2', label: 'No' }
-			  ]
+			]
 		}
 	]
 };
@@ -99,11 +100,11 @@ instance.prototype.actions = function(system) {
 			label: 'Load Clip (nr)',
 			options: [
 				{
-					 type: 'textinput',
-					 label: 'Clip Nr.',
-					 id: 'clip',
-					 default: 1,
-					 regex: self.REGEX_NUMBER
+					type: 'textinput',
+					label: 'Clip Nr.',
+					id: 'clip',
+					default: 1,
+					regex: self.REGEX_NUMBER
 				}
 			]
 		},
@@ -112,11 +113,11 @@ instance.prototype.actions = function(system) {
 			label: 'Play Clip (nr)',
 			options: [
 				{
-					 type: 'textinput',
-					 label: 'Clip Nr.',
-					 id: 'clip',
-					 default: 1,
-					 regex: self.REGEX_NUMBER
+					type: 'textinput',
+					label: 'Clip Nr.',
+					id: 'clip',
+					default: 1,
+					regex: self.REGEX_NUMBER
 				}
 			]
 		},
@@ -125,11 +126,11 @@ instance.prototype.actions = function(system) {
 			label: 'Goto (TimeCode)',
 			options: [
 				{
-					 type: 'textinput',
-					 label: 'hh:mm:ss:ff',
-					 id: 'tc',
-					 default: '00:00:00:00',
-					 regex: self.REGEX_TIMECODE
+					type: 'textinput',
+					label: 'hh:mm:ss:ff',
+					id: 'tc',
+					default: '00:00:00:00',
+					regex: self.REGEX_TIMECODE
 				}
 			]
 		},
@@ -160,7 +161,7 @@ instance.prototype.action = function(action) {
 	var cmd;
 	var opt = action.options;
 
-	// avplayback default port 7000 
+	// avplayback default port 7000
 	switch (action.action) {
 
 		case 'load':
@@ -178,7 +179,8 @@ instance.prototype.action = function(action) {
 		case 'pause':
 			cmd = 'AVP|1|PgmPause';
 			break;
-			case 'nextClip':
+
+		case 'nextClip':
 			cmd = 'AVP|1|NextClip';
 			break;
 
@@ -204,7 +206,7 @@ instance.prototype.action = function(action) {
 
 		case 'prevClip':
 			cmd = 'AVP|1|PrevClip';
-		break;
+			break;
 
 		case 'freeze':
 			cmd = 'AVP|1|TmpHold';
@@ -259,7 +261,6 @@ instance.prototype.action = function(action) {
 			}
 		}
 	}
-	
 };
 
 
