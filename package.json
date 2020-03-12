@@ -1,5 +1,8 @@
 {
-	"name": "avplayback",
+	"name": "ifelseware-avplayback",
+	"legacy": [
+		"avplayback"
+	],
 	"version": "1.0.1",
 	"api_version": "1.0.0",
 	"description": "Control module for AV Playback",
