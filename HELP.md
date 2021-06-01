@@ -1,16 +1,21 @@
-## IfElseWare AV-Playback
+## AV-Playback
 
-**Instance Settings
+AV-Playback is cost effective Windows based media play-out solution that offers a full list of robust features any professional playback operator will find indispensable.
 
-* UDP Address
-* Port Number
-* Use Pad Fix - Appending a space to end of command string breaks compatability with some builds of AV-Playback. 
+To learn more and download a free trial version goto: https://www.ifelseware.com/
 
-**Available commands for IfElseWare AV-Playback**
+**Instance Settings**
 
-* Play
-* Pause
-* Stop
+* IP Address
+* Target port: Default is 7000. If that port is already being used by something else go ahead and change it now. Remember you will also need to match the port number in AV-Key as well.
+
+**Available commands for AV-Playback**
+
+* Load Clip (id)
+* Play Clip (id)
+* Program Play
+* Program Pause
+* Program Stop
 * Play preview clip
 * Preview Pause
 * Preview Stop
@@ -24,6 +29,4 @@
 * Goto 20
 * Goto 30
 * Goto 60
-* Load Clip (number)
-* Play Clip (number)
 * Goto (Timecode)

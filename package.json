@@ -1,16 +1,16 @@
 {
 	"name": "ifelseware-avplayback",
 	"legacy": [
-		"avplayback"
+		"AV-Playback"
 	],
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"api_version": "1.0.0",
-	"description": "Control module for AV Playback",
+	"description": "Control module for AV-Playback",
 	"keywords": [
 		"Video",
 		"Software"
 	],
-	"manufacturer": "if-else{Ware}",
+	"manufacturer": "IEW Solutions (aka ifelseWare)",
 	"product": "AV-Playback",
 	"shortname": "avplayback",
 	"homepage": "https://www.ifelseware.com/",
@@ -18,6 +18,6 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"author": "Per Røine <per.roine@gmail.com>",
+	"author": "Greg Meisel <gregg@ifelseware.com> & Per Røine <per.roine@gmail.com>",
 	"license": "ISC"
 }

@@ -69,15 +69,11 @@ instance.prototype.config_fields = function () {
 			regex: self.REGEX_PORT
 		},
 		{
-			type: 'dropdown',
-			id: 'usePadFix',
-			label: 'Use Pad Fix',
-			default: '2',
-			width: 6,
-			choices: [
-				{ id: '1', label: 'Yes' },
-				{ id: '2', label: 'No' }
-			]
+			type: 'text',
+			id: 'info',
+			label: 'Information',
+			width: 12,
+			value: 'AV-Playback is cost effective Windows based media play-out solution that offers a full list of robust features any professional playback operator will find indispensable.</br></br><a href="https://www.ifelseware.com" target="_new">Learn more about AV-Playback and our other pro audio visual solutions.</a>'
 		}
 	]
 };
@@ -97,11 +93,11 @@ instance.prototype.actions = function(system) {
 
 	self.system.emit('instance_actions', self.id, {
 		'load': {
-			label: 'Load Clip (nr)',
+			label: 'Load Clip (ID)',
 			options: [
 				{
 					type: 'textinput',
-					label: 'Clip Nr.',
+					label: 'Clip ID',
 					id: 'clip',
 					default: 1,
 					regex: self.REGEX_NUMBER
@@ -110,17 +106,34 @@ instance.prototype.actions = function(system) {
 		},
 
 		'playClip': {
-			label: 'Play Clip (nr)',
+			label: 'Load & Play Clip (ID)',
 			options: [
 				{
 					type: 'textinput',
-					label: 'Clip Nr.',
+					label: 'Clip ID',
 					id: 'clip',
 					default: 1,
 					regex: self.REGEX_NUMBER
 				}
 			]
 		},
+
+		'play':     		{ label: 'Program Play' },
+		'pause':    		{ label: 'Program Pause' },
+		'stop':     		{ label: 'Program Stop' },
+		'previewStart':     { label: 'Preview Play' },
+		'previewPause':    	{ label: 'Preview Pause' },
+		'previewStop':     	{ label: 'Preview Stop' },
+		'nextClip':			{ label: 'Next Clip'},
+		'prevClip':			{ label: 'Previous Clip'},
+		'freeze':   		{ label: 'Freeze temp' },
+		'loop':     		{ label: 'Loop temp' },
+		'nextTag':   		{ label: 'Next Tag' },
+		'prevTag':     		{ label: 'Previous Tag' },
+		'10':       		{ label: 'Goto 10' },
+		'20':       		{ label: 'Goto 20' },
+		'30':       		{ label: 'Goto 30' },
+		'60':				{ label: 'Goto 60' },
 
 		'gotoTc': {
 			label: 'Goto (TimeCode)',
@@ -134,23 +147,6 @@ instance.prototype.actions = function(system) {
 				}
 			]
 		},
-
-		'play':     		{ label: 'Play standby clip' },
-		'pause':    		{ label: 'Pause Resume' },
-		'stop':     		{ label: 'Stop' },
-		'previewStart':     	{ label: 'Play preview clip' },
-		'previewPause':    	{ label: 'Preview Pause' },
-		'previewStop':     	{ label: 'Preview Stop' },
-		'nextClip':			{ label: 'Next Clip'},
-		'prevClip':			{ label: 'Previous Clip'},
-		'freeze':   		{ label: 'Freeze temp' },
-		'loop':     		{ label: 'Loop temp' },
-		'nextTag':   		{ label: 'Next Tag' },
-		'prevTag':     		{ label: 'Previous Tag' },
-		'10':       		{ label: 'Goto 10' },
-		'20':       		{ label: 'Goto 20' },
-		'30':       		{ label: 'Goto 30' },
-		'60':       		{ label: 'Goto 60' }
 	});
 };
 
@@ -250,15 +246,7 @@ instance.prototype.action = function(action) {
 		if (self.udp !== undefined) {
 
 			debug('sending ',cmd,"to",self.udp.host);
-
-			// padding breaks my version of AVP
-			// todo, add switch to enable/disable pad
-			// self.udp.send(cmd + " ");
-			if (self.config.usePadFix == '1') {
-				self.udp.send(cmd + " ");
-			} else {
-				self.udp.send(cmd);
-			}
+			self.udp.send(cmd);
 		}
 	}
 };
