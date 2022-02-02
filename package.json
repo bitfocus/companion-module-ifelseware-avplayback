@@ -13,11 +13,18 @@
 	"manufacturer": "IEW Solutions (aka ifelseWare)",
 	"product": "AV-Playback",
 	"shortname": "avplayback",
-	"homepage": "https://www.ifelseware.com/",
+	"homepage": "https://github.com/bitfocus/companion-module-ifelseware-avplayback#readme",
 	"main": "avplayback.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "Greg Meisel <gregg@ifelseware.com> & Per Røine <per.roine@gmail.com>",
-	"license": "ISC"
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/bitfocus/companion-module-ifelseware-avplayback/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-module-ifelseware-avplayback.git"
+	}
 }
