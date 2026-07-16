@@ -7,6 +7,7 @@ import {
 } from '@companion-module/base'
 import { getActionDefinitions } from './actions.js'
 import { GetConfigFields, type ModuleConfig } from './config.js'
+import { getPresetDefinitions } from './presets.js'
 
 export class AvPlaybackInstance extends InstanceBase<ModuleConfig> {
 	config!: ModuleConfig
@@ -20,6 +21,7 @@ export class AvPlaybackInstance extends InstanceBase<ModuleConfig> {
 		this.config = config
 
 		this.setActionDefinitions(getActionDefinitions(this))
+		this.setPresetDefinitions(getPresetDefinitions())
 		await this.configUpdated(config)
 	}
 
@@ -70,6 +72,10 @@ export class AvPlaybackInstance extends InstanceBase<ModuleConfig> {
 		this.udp.on('listening', () => {
 			this.log('debug', 'UDP listener initialized')
 			this.updateStatus(InstanceStatus.Ok)
+		})
+
+		this.udp.on('data', (message) => {
+			this.log('debug', 'UDP message received: ' + message)
 		})
 
 		this.udp.on('status_change', (status, message) => {

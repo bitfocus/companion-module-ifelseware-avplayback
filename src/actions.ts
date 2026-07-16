@@ -24,7 +24,7 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 					type: 'textinput',
 					label: 'Clip ID',
 					id: 'clip',
-					default: '03',
+					default: '01',
 				},
 			],
 			callback: async (action) => {
@@ -39,7 +39,7 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 					type: 'textinput',
 					label: 'Clip ID',
 					id: 'clip',
-					default: '03',
+					default: '01',
 				},
 			],
 			callback: async (action) => {
