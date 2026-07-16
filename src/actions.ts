@@ -71,7 +71,8 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 			},
 		},
 
-		previewStart: {
+		//Hiding these for now, as they don't seem to work in the latest versions
+		/* previewStart: {
 			name: 'Preview Play',
 			options: [],
 			callback: async () => {
@@ -93,7 +94,7 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 			callback: async () => {
 				await sendCommand('AVP|1|PrvStop')
 			},
-		},
+		}, */
 
 		nextClip: {
 			name: 'Next Clip',

@@ -28,10 +28,10 @@ const PRESET_ACTIONS: PresetAction[] = [
 	{ id: '30', name: 'Goto 30', category: 'Transport', text: 'Goto\n30' },
 	{ id: '60', name: 'Goto 60', category: 'Transport', text: 'Goto\n60' },
 
-	{ id: 'previewStart', name: 'Preview Play', category: 'Preview', text: 'Prv\nPlay' },
+	/* 	{ id: 'previewStart', name: 'Preview Play', category: 'Preview', text: 'Prv\nPlay' },
 	{ id: 'previewPause', name: 'Preview Pause', category: 'Preview', text: 'Prv\nPause' },
 	{ id: 'previewStop', name: 'Preview Stop', category: 'Preview', text: 'Prv\nStop' },
-
+ */
 	{ id: 'nextTag', name: 'Next Tag', category: 'Tags', text: 'Next\nTag' },
 	{ id: 'prevTag', name: 'Previous Tag', category: 'Tags', text: 'Prev\nTag' },
 
