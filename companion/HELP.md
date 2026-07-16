@@ -2,23 +2,25 @@
 
 AV-Playback is cost effective Windows based media play-out solution that offers a full list of robust features any professional playback operator will find indispensable.
 
-To learn more and download a free trial version goto: https://www.ifelseware.com/
+To learn more and download a free trial version go to: https://www.ifelseware.com/
 
-**Instance Settings**
+### Compatibility
 
-- IP Address
-- Target port: Default is 7000. If that port is already being used by something else go ahead and change it now. Remember you will also need to match the port number in AV-Key as well.
+- AVP-Legion II
+- AVP-Legion EC
 
-**Available commands for AV-Playback**
+### Getting Started
+
+- In AVP, under Settings > Global Settings > External Control, ensure "Enable UDP Listener (AVP Protocol)" is enabled
+- In the configuration, enter the IP address and port of the AVP instance
+
+### Available Actions
 
 - Load Clip (id)
 - Play Clip (id)
 - Program Play
 - Program Pause
 - Program Stop
-- Play preview clip
-- Preview Pause
-- Preview Stop
 - Next Clip
 - Previous Clip
 - Freeze temp
