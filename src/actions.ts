@@ -16,8 +16,6 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 		}
 	}
 
-	const padClip = (clip: string | number): string => ('0' + clip).substr(-2)
-
 	return {
 		load: {
 			name: 'Load Clip (ID)',
@@ -26,12 +24,11 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 					type: 'textinput',
 					label: 'Clip ID',
 					id: 'clip',
-					default: '1',
-					regex: Regex.NUMBER,
+					default: '03',
 				},
 			],
 			callback: async (action) => {
-				await sendCommand('AVP|1|LoadClip,' + padClip(String(action.options.clip)))
+				await sendCommand('AVP|1|LoadClip,' + String(action.options.clip))
 			},
 		},
 
@@ -42,12 +39,11 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 					type: 'textinput',
 					label: 'Clip ID',
 					id: 'clip',
-					default: '1',
-					regex: Regex.NUMBER,
+					default: '03',
 				},
 			],
 			callback: async (action) => {
-				await sendCommand('AVP|1|PgmStart,' + padClip(String(action.options.clip)))
+				await sendCommand('AVP|1|PgmStart,' + String(action.options.clip))
 			},
 		},
 
@@ -192,6 +188,66 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 			],
 			callback: async (action) => {
 				await sendCommand('AVP|1|SetPosition,' + String(action.options.tc))
+			},
+		},
+
+		fastForward: {
+			name: 'Fast Forward',
+			options: [
+				{
+					type: 'number',
+					label: 'Speed (1000=normal, 4000=4x, 0=end)',
+					id: 'speed',
+					default: 3500,
+					min: 0,
+					max: 4000,
+				},
+			],
+			callback: async (action) => {
+				await sendCommand('AVP|1|FForward,' + String(action.options.speed))
+			},
+		},
+
+		rewind: {
+			name: 'Rewind',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'State',
+					id: 'state',
+					default: '1',
+					choices: [
+						{ id: '1', label: 'On' },
+						{ id: '0', label: 'Off' },
+					],
+				},
+			],
+			callback: async (action) => {
+				await sendCommand('AVP|1|Rewind,' + String(action.options.state))
+			},
+		},
+
+		clear: {
+			name: 'Clear All Selected',
+			options: [],
+			callback: async () => {
+				await sendCommand('AVP|1|Clear')
+			},
+		},
+
+		hidePgm: {
+			name: 'Hide Program Output',
+			options: [],
+			callback: async () => {
+				await sendCommand('AVP|1|HidePGM')
+			},
+		},
+
+		autoStart: {
+			name: 'Auto Start',
+			options: [],
+			callback: async () => {
+				await sendCommand('AVP|1|AutoStart')
 			},
 		},
 	}
