@@ -1,8 +1,5 @@
 {
-  "ExpandedNodes": [
-    "",
-    "\\icons"
-  ],
-  "SelectedNode": "\\package.json",
-  "PreviewInSolutionExplorer": false
+	"ExpandedNodes": ["", "\\icons"],
+	"SelectedNode": "\\package.json",
+	"PreviewInSolutionExplorer": false
 }
