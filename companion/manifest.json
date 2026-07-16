@@ -1,0 +1,31 @@
+{
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"id": "ifelseware-avplayback",
+	"name": "IEW Solutions (aka ifelseWare) - AVP",
+	"shortname": "av-playback",
+	"description": "Control module for AVP-Legion EC and AVP-Legion II",
+	"version": "0.0.0",
+	"license": "ISC",
+	"repository": "git+https://github.com/bitfocus/companion-module-ifelseware-avplayback.git",
+	"bugs": "https://github.com/bitfocus/companion-module-ifelseware-avplayback/issues",
+	"maintainers": [
+		{
+			"name": "Greg Meisel",
+			"email": "gregg@ifelseware.com"
+		},
+		{
+			"name": "Per Røine",
+			"email": "per.roine@gmail.com"
+		}
+	],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../dist/main.js"
+	},
+	"legacyIds": ["AV-Playback"],
+	"manufacturer": "IEW Solutions (aka ifelseWare)",
+	"products": ["AVP-Legion EC", "AVP-Legion II"],
+	"keywords": ["Video", "Software", "playback", "media"]
+}
