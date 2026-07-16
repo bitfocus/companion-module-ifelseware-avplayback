@@ -56,7 +56,7 @@ export function getActionDefinitions(self: AvPlaybackInstance): CompanionActionD
 		},
 
 		pause: {
-			name: 'Program Pause',
+			name: 'Program Play / Pause Toggle',
 			options: [],
 			callback: async () => {
 				await sendCommand('AVP|1|PgmPause')

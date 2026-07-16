@@ -17,8 +17,8 @@ const PRESET_ACTIONS: PresetAction[] = [
 	{ id: 'nextClip', name: 'Next Clip', category: 'Clips', text: 'Next\nClip' },
 	{ id: 'prevClip', name: 'Previous Clip', category: 'Clips', text: 'Prev\nClip' },
 
-	{ id: 'play', name: 'Program Play', category: 'Transport', text: 'Play' },
-	{ id: 'pause', name: 'Program Pause', category: 'Transport', text: 'Pause' },
+	{ id: 'play', name: 'Program Play Selected Clip', category: 'Transport', text: 'Play Selected' },
+	{ id: 'pause', name: 'Program Play / Pause Toggle', category: 'Transport', text: 'Play / Pause' },
 	{ id: 'stop', name: 'Program Stop', category: 'Transport', text: 'Stop' },
 	{ id: 'fastForward', name: 'Fast Forward', category: 'Transport', text: 'FF', options: { speed: 3500 } },
 	{ id: 'rewind', name: 'Rewind', category: 'Transport', text: 'Rewind', options: { state: '1' } },
