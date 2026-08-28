@@ -5,7 +5,7 @@
 	"shortname": "av-playback",
 	"description": "Control module for AVP-Legion EC and AVP-Legion II",
 	"version": "0.0.0",
-	"license": "ISC",
+	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-ifelseware-avplayback.git",
 	"bugs": "https://github.com/bitfocus/companion-module-ifelseware-avplayback/issues",
 	"maintainers": [
@@ -24,8 +24,18 @@
 		"apiVersion": "0.0.0",
 		"entrypoint": "../dist/main.js"
 	},
-	"legacyIds": ["AV-Playback"],
+	"legacyIds": [
+		"AV-Playback"
+	],
 	"manufacturer": "IEW Solutions (aka ifelseWare)",
-	"products": ["AVP-Legion EC", "AVP-Legion II"],
-	"keywords": ["Video", "Software", "playback", "media"]
+	"products": [
+		"AVP-Legion EC",
+		"AVP-Legion II"
+	],
+	"keywords": [
+		"Video",
+		"Software",
+		"playback",
+		"media"
+	]
 }
